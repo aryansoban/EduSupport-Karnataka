@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Portal - Value Education (English Support)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8fafc; }
+        .card-disabled { opacity: 0.6; cursor: not-allowed; grayscale: 100%; }
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background: #000; border-radius: 8px; }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        @media print {
+            .no-print { display: none; }
+            .print-area { display: block !important; width: 100%; }
+        }
+    </style>
+</head>
+<body class="text-slate-800">
+
+    <!-- NAVIGATION MENU -->
+    <nav class="bg-indigo-900 text-white shadow-md sticky top-0 z-50 no-print">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center py-3">
+                <div class="font-bold text-xl mb-2 md:mb-0">EduSupport Karnataka</div>
+                <div class="flex flex-wrap justify-center gap-4 text-sm font-medium">
+                    <button onclick="showPage('subjects')" class="hover:text-yellow-400">Subjects</button>
+                    <button onclick="showPage('content')" class="hover:text-yellow-400">Content</button>
+                    <button onclick="showPage('handbook')" class="hover:text-yellow-400">Teacher Handbook</button>
+                    <button onclick="showPage('assessment')" class="hover:text-yellow-400">Assessment & Coverage</button>
+                    <div class="border-l border-indigo-700 pl-4 flex gap-2">
+                        <span class="text-yellow-400">English</span> | <span>ಕನ್ನಡ</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="max-w-6xl mx-auto px-4 py-8">
+
+        <!-- PAGE: SUBJECTS -->
+        <div id="page-subjects" class="page-content">
+            <h1 class="text-2xl font-bold mb-6 border-b-2 border-indigo-900 pb-2">Select Subject</h1>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- English - Active -->
+                <div onclick="showPage('class-listing')" class="bg-white border-2 border-indigo-200 p-6 rounded-xl shadow-sm hover:shadow-md cursor-pointer transition-all border-l-8 border-l-indigo-600">
+                    <h2 class="text-xl font-bold text-indigo-900">English</h2>
+                    <p class="text-sm text-slate-600 mt-2">Value Education & LSRW Skills (Std I-V)</p>
+                    <span class="inline-block mt-4 text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Active</span>
+                </div>
+                <!-- Others - Disabled -->
+                <div class="card-disabled bg-white border border-slate-200 p-6 rounded-xl shadow-sm">
+                    <h2 class="text-xl font-bold text-slate-400">Mathematics</h2>
+                    <p class="text-sm mt-2">Coming Soon</p>
+                </div>
+                <div class="card-disabled bg-white border border-slate-200 p-6 rounded-xl shadow-sm">
+                    <h2 class="text-xl font-bold text-slate-400">EVS</h2>
+                    <p class="text-sm mt-2">Coming Soon</p>
+                </div>
+                <div class="card-disabled bg-white border border-slate-200 p-6 rounded-xl shadow-sm">
+                    <h2 class="text-xl font-bold text-slate-400">Science</h2>
+                    <p class="text-sm mt-2">Coming Soon</p>
+                </div>
+                <div class="card-disabled bg-white border border-slate-200 p-6 rounded-xl shadow-sm">
+                    <h2 class="text-xl font-bold text-slate-400">Kannada</h2>
+                    <p class="text-sm mt-2">Coming Soon</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE: CONTENT EXPLAINER -->
+        <div id="page-content" class="page-content hidden">
+            <h1 class="text-2xl font-bold mb-6">How Content is Organised</h1>
+            <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-200 space-y-4">
+                <section>
+                    <h3 class="font-bold text-indigo-800">Class-wise structure (Class 1–5)</h3>
+                    <p class="text-sm">Content is tailored specifically for the cognitive levels of primary students in Government Schools.</p>
+                </section>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="p-4 bg-slate-50 rounded border border-slate-100">
+                        <h4 class="font-bold text-sm">Part A: Core Lessons</h4>
+                        <p class="text-xs">Teacher-led moral stories and discussions to build values.</p>
+                    </div>
+                    <div class="p-4 bg-slate-50 rounded border border-slate-100">
+                        <h4 class="font-bold text-sm">Part B: Practice & Worksheets</h4>
+                        <p class="text-xs">Simple activities to reinforce Listening, Speaking, Reading, and Writing.</p>
+                    </div>
+                </div>
+                <section>
+                    <h3 class="font-bold text-indigo-800">Pedagogy & Support</h3>
+                    <ul class="list-disc ml-5 text-sm space-y-2 mt-2">
+                        <li><strong>Kannada + English Support:</strong> Teachers are encouraged to code-mix (use both languages) to ensure student understanding.</li>
+                        <li><strong>Teacher-led:</strong> The teacher is the primary facilitator; technology is a support tool.</li>
+                        <li><strong>Low-bandwidth Friendly:</strong> Text-heavy design with optional video links for areas with limited internet.</li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+
+        <!-- PAGE: CLASS LISTING (ENGLISH HOME) -->
+        <div id="page-class-listing" class="page-content hidden">
+            <h1 class="text-2xl font-bold mb-6">English (Value Education) - Select Class</h1>
+            <div class="space-y-4">
+                <button onclick="renderStandard(1)" class="w-full text-left p-4 bg-white border border-slate-200 rounded-lg hover:bg-indigo-50 flex justify-between items-center transition-colors">
+                    <div>
+                        <span class="font-bold">Class 1</span>
+                        <p class="text-xs text-slate-500">Focus: Exposure-based learning</p>
+                    </div>
+                    <span class="text-indigo-600">View Topics →</span>
+                </button>
+                <button onclick="renderStandard(2)" class="w-full text-left p-4 bg-white border border-slate-200 rounded-lg hover:bg-indigo-50 flex justify-between items-center transition-colors">
+                    <div>
+                        <span class="font-bold">Class 2</span>
+                        <p class="text-xs text-slate-500">Focus: Listening & Speaking</p>
+                    </div>
+                    <span class="text-indigo-600">View Topics →</span>
+                </button>
+                <button onclick="renderStandard(3)" class="w-full text-left p-4 bg-white border border-slate-200 rounded-lg hover:bg-indigo-50 flex justify-between items-center transition-colors">
+                    <div>
+                        <span class="font-bold">Class 3</span>
+                        <p class="text-xs text-slate-500">Focus: Reading & Structure</p>
+                    </div>
+                    <span class="text-indigo-600">View Topics →</span>
+                </button>
+                <button onclick="renderStandard(4)" class="w-full text-left p-4 bg-white border border-slate-200 rounded-lg hover:bg-indigo-50 flex justify-between items-center transition-colors">
+                    <div>
+                        <span class="font-bold">Class 4</span>
+                        <p class="text-xs text-slate-500">Focus: Comprehension</p>
+                    </div>
+                    <span class="text-indigo-600">View Topics →</span>
+                </button>
+                <button onclick="renderStandard(5)" class="w-full text-left p-4 bg-white border border-slate-200 rounded-lg hover:bg-indigo-50 flex justify-between items-center transition-colors">
+                    <div>
+                        <span class="font-bold">Class 5</span>
+                        <p class="text-xs text-slate-500">Focus: Formal Learning</p>
+                    </div>
+                    <span class="text-indigo-600">View Topics →</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- DYNAMIC PAGE: STANDARD VIEW -->
+        <div id="page-standard-view" class="page-content hidden">
+            <div id="standard-content"></div>
+        </div>
+
+        <!-- DYNAMIC PAGE: TOPIC DETAIL -->
+        <div id="page-topic-detail" class="page-content hidden">
+            <button onclick="goBackToStandard()" class="mb-4 text-sm text-indigo-700 font-medium no-print">← Back to Topics</button>
+            <div id="topic-content" class="print-area"></div>
+        </div>
+
+        <!-- PLACEHOLDER PAGES -->
+        <div id="page-handbook" class="page-content hidden">
+            <h1 class="text-2xl font-bold">Teacher Handbook</h1>
+            <p class="mt-4 text-slate-600">Core guidelines for implementing Value Education in Karnataka primary schools.</p>
+        </div>
+        <div id="page-assessment" class="page-content hidden">
+            <h1 class="text-2xl font-bold">Assessment & Coverage</h1>
+            <p class="mt-4 text-slate-600">Tracking progress and oral assessment checklist for Std I-V.</p>
+        </div>
+
+    
+        <!-- PAGE: KANNADA CLASS LISTING (ADDED) -->
+        <div id="page-class-listing-kannada" class="page-content hidden">
+            <h1 class="text-2xl font-bold mb-6">Kannada (Primary 1–5) - Select Class</h1>
+            <div class="space-y-4">
+                <button onclick="renderKannadaStandard(1)" class="w-full text-left p-4 bg-white border border-slate-200 rounded-lg hover:bg-indigo-50 flex justify-between items-center transition-colors">
+                    <div>
+                        <span class="font-bold">Class 1</span>
+                        <p class="text-xs text-slate-500">Focus: Letters, sounds, basic words</p>
+                    </div>
+                    <span class="text-indigo-600">View Topics →</span>
+                </button>
+                <button onclick="renderKannadaStandard(2)" class="w-full text-left p-4 bg-white border border-slate-200 rounded-lg hover:bg-indigo-50 flex justify-between items-center transition-colors">
+                    <div>
+                        <span class="font-bold">Class 2</span>
+                        <p class="text-xs text-slate-500">Focus: Gunita, words & simple sentences</p>
+                    </div>
+                    <span class="text-indigo-600">View Topics →</span>
+                </button>
+                <button onclick="renderKannadaStandard(3)" class="w-full text-left p-4 bg-white border border-slate-200 rounded-lg hover:bg-indigo-50 flex justify-between items-center transition-colors">
+                    <div>
+                        <span class="font-bold">Class 3</span>
+                        <p class="text-xs text-slate-500">Focus: Reading, poems & short stories</p>
+                    </div>
+                    <span class="text-indigo-600">View Topics →</span>
+                </button>
+                <button onclick="renderKannadaStandard(4)" class="w-full text-left p-4 bg-white border border-slate-200 rounded-lg hover:bg-indigo-50 flex justify-between items-center transition-colors">
+                    <div>
+                        <span class="font-bold">Class 4</span>
+                        <p class="text-xs text-slate-500">Focus: Lessons/poems + comprehension + writing</p>
+                    </div>
+                    <span class="text-indigo-600">View Topics →</span>
+                </button>
+                <button onclick="renderKannadaStandard(5)" class="w-full text-left p-4 bg-white border border-slate-200 rounded-lg hover:bg-indigo-50 flex justify-between items-center transition-colors">
+                    <div>
+                        <span class="font-bold">Class 5</span>
+                        <p class="text-xs text-slate-500">Focus: Grammar basics + letter writing + lessons</p>
+                    </div>
+                    <span class="text-indigo-600">View Topics →</span>
+                </button>
+            </div>
+
+            <div class="mt-6">
+                <button onclick="showPage('subjects')" class="text-sm text-indigo-700 hover:underline">← Back to Subjects</button>
+            </div>
+        </div>
+
+</main>
+
+    <footer class="bg-slate-100 border-t border-slate-200 py-6 mt-12 no-print">
+        <div class="max-w-6xl mx-auto px-4 text-center text-xs text-slate-500">
+            <p>Government of Karnataka - Educational Resources</p>
+            <p class="mt-1">For teacher use only. Low-bandwidth optimized.</p>
+        </div>
+    </footer>
+
+    <script>
+        
+        let currentSubject = "english";
+// CURRICULUM DATA
+        const curriculum = {
+            1: {
+                purpose: "Exposure-based learning to build comfort with English sounds through basic values.",
+                nature: "Exposure-based",
+                topics: [
+                    { title: "Love towards parents", url: "https://www.youtube.com/watch?v=KM0fgVudmKM" },
+                    { title: "Cleanliness", url: "https://www.youtube.com/watch?v=sed29xY62vE" },
+                    { title: "Respect for elders", url: "https://www.youtube.com/watch?v=D4JVS-uYYaM" },
+                    { title: "Friendship", url: "https://www.youtube.com/watch?v=a-R4xBXs1A0" },
+                    { title: "Truthfulness", url: "https://www.youtube.com/watch?v=IilpqlA8x8Q" },
+                    { title: "Politeness", url: "https://www.youtube.com/watch?v=XpcM-vE_swg" },
+                    { title: "Devotion to God", url: "https://www.youtube.com/watch?v=HBZvU4oy_8k" },
+                    { title: "Simplicity", url: "https://www.youtube.com/watch?v=qchsLWTWCD4" },
+                    { title: "Environment (Love for nature)", url: "https://www.youtube.com/watch?v=WTZY7-hrVvY" },
+                    { title: "Not hurting others", url: "https://www.youtube.com/watch?v=lWoy3R90kLg" }
+                ]
+            },
+            2: {
+                purpose: "Developing listening and initial speaking skills through family and social ethics.",
+                nature: "Listening & Speaking",
+                topics: [
+                    { title: "Love for brothers & sisters", url: "https://www.youtube.com/watch?v=e74svGNF88I" },
+                    { title: "Love for animals (Pets)", url: "https://www.youtube.com/watch?v=rgMRPqGa8aQ" },
+                    { title: "Taking care of your belongings", url: "https://www.youtube.com/watch?v=Px7tMlOck2k" },
+                    { title: "Punctuality", url: "https://www.youtube.com/watch?v=PsUrZUz7esk" },
+                    { title: "Obedience", url: "https://www.youtube.com/watch?v=K2-Mha47GVs" }
+                ]
+            },
+            3: {
+                purpose: "Focusing on simple reading and sentence structure using character-building themes.",
+                nature: "Reading & Structure",
+                topics: [
+                    { title: "Friendship", url: "https://www.youtube.com/watch?v=kKnUroixuNs" },
+                    { title: "Punctuality", url: "https://www.youtube.com/watch?v=_TFFfW8A4eg" },
+                    { title: "Being happy", url: "https://www.youtube.com/watch?v=ufbOHl1mmYk" },
+                    { title: "Using beautiful language", url: "https://www.youtube.com/watch?v=IaGEZ1YcCXo" },
+                    { title: "Sincerity (Whatever you do, do it well)", url: "https://www.youtube.com/watch?v=hTWv2jh-QFY" }
+                ]
+            },
+            4: {
+                purpose: "Enhancing comprehension skills and understanding moral consequences.",
+                nature: "Comprehension",
+                topics: [
+                    { title: "Commitment to learning", url: "https://www.youtube.com/watch?v=W3c0w_IbGfE" },
+                    { title: "Empathy", url: "https://www.youtube.com/watch?v=27sho6s2eK8" },
+                    { title: "Sacrifice", url: "https://www.youtube.com/watch?v=yhuL3i9cmpk" },
+                    { title: "Truthfulness", url: "https://www.youtube.com/watch?v=M56dxQZORbY" },
+                    { title: "Self-control", url: "https://www.youtube.com/watch?v=0AFRnZEkqq4" }
+                ]
+            },
+            5: {
+                purpose: "Transitioning to formal English language usage through complex life values.",
+                nature: "Formal learning",
+                topics: [
+                    { title: "Controlling anger", url: "https://www.youtube.com/watch?v=nMfcuu00jro" },
+                    { title: "Desire to learn", url: "https://www.youtube.com/watch?v=tWJ0k_UJswU" },
+                    { title: "Courage", url: "https://www.youtube.com/watch?v=fODUMKvJ5nI" },
+                    { title: "Punctuality", url: "https://www.youtube.com/watch?v=FRPx4RMN6ts" },
+                    { title: "Determination", url: "https://www.youtube.com/watch?v=nhOMTDpwSWw" }
+                ]
+            }
+        };
+
+        let currentStandard = null;
+
+        function showPage(pageId) {
+            document.querySelectorAll('.page-content').forEach(p => p.classList.add('hidden'));
+            document.getElementById('page-' + pageId).classList.remove('hidden');
+            window.scrollTo(0,0);
+        }
+
+        function renderStandard(stdNum) {
+            currentStandard = stdNum;
+            const data = curriculum[stdNum];
+            const container = document.getElementById('standard-content');
+            
+            let html = `
+                <button onclick="showPage('class-listing')" class="mb-4 text-sm text-indigo-700 font-medium no-print">← Back to All Classes</button>
+                <div class="bg-indigo-50 p-6 rounded-xl border border-indigo-100 mb-8">
+                    <h1 class="text-3xl font-bold text-indigo-900">Class ${stdNum} Overview</h1>
+                    <div class="mt-4 space-y-3">
+                        <p><strong>Purpose:</strong> ${data.purpose}</p>
+                        <p><strong>Skills Focus:</strong> Listening, Speaking, Reading, Writing (LSRW)</p>
+                        <p><strong>Nature of Learning:</strong> ${data.nature}</p>
+                        <p><strong>Teacher Role:</strong> Primary facilitator. Use Kannada to explain English concepts where needed (code-mixing encouraged).</p>
+                    </div>
+                </div>
+                <h2 class="text-xl font-bold mb-4">Topic Listing</h2>
+                <div class="grid gap-3">
+            `;
+
+            data.topics.forEach((topic, index) => {
+                html += `
+                    <button onclick="renderTopic(${index})" class="w-full text-left p-4 bg-white border border-slate-200 rounded-lg hover:border-indigo-400 transition-colors shadow-sm font-medium">
+                        ${topic.title}
+                    </button>
+                `;
+            });
+
+            html += `</div>`;
+            container.innerHTML = html;
+            showPage('standard-view');
+        }
+
+        function renderTopic(topicIndex) {
+            const stdData = curriculum[currentStandard];
+            const topic = stdData.topics[topicIndex];
+            const container = document.getElementById('topic-content');
+
+            // Generate Video ID for embedding (simple extract)
+            const videoId = topic.url.split('v=')[1];
+
+            container.innerHTML = `
+                <div class="bg-white p-6 md:p-8 rounded-xl shadow-md border border-slate-200">
+                    <div class="flex justify-between items-start mb-6">
+                        <h1 class="text-3xl font-bold text-indigo-900">${topic.title}</h1>
+                        <button onclick="window.print()" class="no-print bg-slate-100 text-slate-700 px-3 py-1 rounded text-xs border border-slate-300 font-bold">Print Page</button>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="space-y-6">
+                            <section>
+                                <h3 class="text-lg font-bold border-l-4 border-indigo-600 pl-2 mb-2">Learning Objective</h3>
+                                <p class="text-sm italic">Students will understand the importance of ${topic.title.toLowerCase()} in their daily lives and practice simple English related to it.</p>
+                            </section>
+
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="p-3 bg-slate-50 rounded border border-slate-100">
+                                    <h4 class="font-bold text-xs uppercase text-slate-500">Listening</h4>
+                                    <ul class="text-sm list-disc ml-4 mt-1"><li>Listen to the teacher's story.</li><li>Identify keywords.</li></ul>
+                                </div>
+                                <div class="p-3 bg-slate-50 rounded border border-slate-100">
+                                    <h4 class="font-bold text-xs uppercase text-slate-500">Speaking</h4>
+                                    <ul class="text-sm list-disc ml-4 mt-1"><li>Answer simple questions.</li><li>Repeat key phrases.</li></ul>
+                                </div>
+                                <div class="p-3 bg-slate-50 rounded border border-slate-100">
+                                    <h4 class="font-bold text-xs uppercase text-slate-500">Reading</h4>
+                                    <ul class="text-sm list-disc ml-4 mt-1"><li>Read topic heading.</li><li>Recognize new words.</li></ul>
+                                </div>
+                                <div class="p-3 bg-slate-50 rounded border border-slate-100">
+                                    <h4 class="font-bold text-xs uppercase text-slate-500">Writing</h4>
+                                    <ul class="text-sm list-disc ml-4 mt-1"><li>Trace the title.</li><li>Draw a small picture.</li></ul>
+                                </div>
+                            </div>
+
+                            <section class="bg-indigo-50 p-4 rounded-lg">
+                                <h3 class="text-lg font-bold text-indigo-900 mb-2">Teacher Explanation</h3>
+                                <div class="text-sm space-y-2">
+                                    <p>Today we will learn about ${topic.title}. It is very important for all of us.</p>
+                                    <p>Teacher should tell a short story about this value in simple English.</p>
+                                    <p>Explain the meaning in Kannada if students find English difficult.</p>
+                                    <p>Ask children to share their own experiences about ${topic.title.toLowerCase()}.</p>
+                                </div>
+                            </section>
+                        </div>
+
+                        <div class="space-y-6">
+                            <section>
+                                <h3 class="text-lg font-bold mb-2">Classroom Questions (Oral)</h3>
+                                <ol class="list-decimal ml-5 text-sm space-y-2">
+                                    <li>What did you see in the story?</li>
+                                    <li>Why is ${topic.title} important for us?</li>
+                                    <li>Can you show me an example of this?</li>
+                                </ol>
+                            </section>
+
+                            <section>
+                                <h3 class="text-lg font-bold mb-2">Classroom Activity</h3>
+                                <div class="p-4 border-2 border-dashed border-slate-300 rounded-lg text-sm bg-yellow-50">
+                                    <strong>Role Play:</strong> Teacher invites two students to act out a simple scene demonstrating ${topic.title}. Others clap and repeat the value name.
+                                </div>
+                            </section>
+
+                            <section class="no-print">
+                                <h3 class="text-lg font-bold mb-2">Video Resource</h3>
+                                <div class="video-container mb-2">
+                                    <iframe src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>
+                                </div>
+                                <p class="text-[10px] text-slate-500 italic mb-2">“If video does not play, teacher may skip and continue lesson orally.”</p>
+                                <a href="${topic.url}" target="_blank" class="text-xs text-indigo-600 underline break-all">${topic.url}</a>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            `;
+            showPage('topic-detail');
+        }
+
+        function goBackToStandard() {
+            showPage('standard-view');
+        }
+
+        // Initialize view
+        window.onload = () => showPage('subjects');
+    
+        // -----------------------------
+        // KANNADA CURRICULUM DATA (Std 1–5)
+                // -----------------------------
+        // KANNADA CURRICULUM DATA (Std 1–5) — same template as English topic page
+        // -----------------------------
+        const kannadaCurriculum = {
+            1: {
+                purpose: "Foundational Kannada: swara/vyanjana recognition, pronunciation, and neat handwriting.",
+                nature: "Letters & Sounds",
+                topics: [
+                    {
+                        title: "ಸ್ವರಗಳು (Swaragalu) – Kannada Vowels",
+                        learningObjective: "Students will recognize and pronounce Kannada vowels (ಸ್ವರಗಳು) and write them neatly. ವಿದ್ಯಾರ್ಥಿಗಳು ಸ್ವರಗಳನ್ನು ಗುರುತಿಸಿ ಉಚ್ಛರಿಸಿ ಬರೆಯುತ್ತಾರೆ.",
+                        lsrw: {
+                            listening: ["Listen to teacher pronounce each vowel slowly.", "Identify the vowel sound (ಅ/ಆ/ಇ/ಈ…)."],
+                            speaking: ["Repeat each vowel aloud as a class.", "Say a vowel when teacher shows the letter card."],
+                            reading: ["Point and read vowels from the chart.", "Match same vowels in a worksheet."],
+                            writing: ["Trace vowels in the notebook.", "Copy-write 5 vowels neatly (with spacing)."]
+                        },
+                        oralQuestions: ["ಇಂದು ನಾವು ಯಾವ ಅಕ್ಷರಗಳನ್ನು ಕಲಿತೆವು?", "ಈ ಅಕ್ಷರವನ್ನು ಜೋರಾಗಿ ಓದಿ.", "ಅ ಮತ್ತು ಆ ನಡುವಿನ ವ್ಯತ್ಯಾಸ ಏನು? (ಸರಳವಾಗಿ ಹೇಳಿ)"],
+                        activity: { title: "Vowel Hunt", description: "Teacher writes 5 vowels on the board. Students come one by one and circle the vowel the teacher says aloud." },
+                        teacherExplanation: [
+                            "Today we will learn Kannada vowels (ಸ್ವರಗಳು). Start by showing the vowel chart.",
+                            "Pronounce each vowel clearly (slow → normal). Ask students to repeat together.",
+                            "Demonstrate how to write the vowel with correct strokes. Walk around and correct grip and spacing.",
+                            "If students struggle, use simple examples with objects (ಅ = ಅಮ್ಮ, ಇ = ಇಲಿ) and let them repeat."
+                        ],
+                        videoUrl: "https://www.youtube.com/watch?v=AC_dYX1fTXQ"
+                    },
+                    {
+                        title: "ವ್ಯಂಜನಗಳು (Vyanjanagalu) – Kannada Consonants",
+                        learningObjective: "Students will recognize common consonants and practice pronunciation and writing. ವಿದ್ಯಾರ್ಥಿಗಳು ವ್ಯಂಜನಗಳನ್ನು ಗುರುತಿಸಿ ಉಚ್ಛರಿಸಿ ಬರೆಯುತ್ತಾರೆ.",
+                        lsrw: {
+                            listening: ["Listen to teacher pronounce consonants (ಕ, ಖ, ಗ…).", "Clap once when you hear ‘ಕ’ sound."],
+                            speaking: ["Repeat consonants aloud.", "Say one word starting with the consonant shown."],
+                            reading: ["Read consonants from the board.", "Match consonant to picture word (ಕ-ಕಮಲ)."],
+                            writing: ["Trace 4–6 consonants.", "Copy-write in 2 lines with neat spacing."]
+                        },
+                        oralQuestions: ["ಈ ಅಕ್ಷರ ಯಾವುದು?", "ಈ ಅಕ್ಷರದಿಂದ ಶುರುವಾಗುವ ಪದ ಹೇಳಿ.", "ಕ ಮತ್ತು ಗ ಬೇರೆ ಬೇರೆ ಹೇಗೆ?"],
+                        activity: { title: "Picture → Letter", description: "Show a picture (e.g., ಕಮಲ). Students say the first letter and point to it on the chart." },
+                        teacherExplanation: [
+                            "Show 5–6 consonants only (small set). Don’t rush—repeat many times.",
+                            "Use picture/real objects to connect sound to meaning.",
+                            "Writing: demonstrate stroke order and insist on slow, neat writing."
+                        ],
+                        videoUrl: "https://www.youtube.com/watch?v=2EEdUhkceJ0"
+                    },
+                    {
+                        title: "ಗುಣಿತಾಕ್ಷರಗಳ ಪರಿಚಯ (Gunita) – Basic Matras",
+                        learningObjective: "Students will understand how vowel signs change consonants (ಕ, ಕಾ, ಕಿ…). ವಿದ್ಯಾರ್ಥಿಗಳು ಗುಣಿತಾಕ್ಷರಗಳನ್ನು ಗುರುತಿಸಿ ಓದಲು ಆರಂಭಿಸುತ್ತಾರೆ.",
+                        lsrw: {
+                            listening: ["Listen to teacher read: ಕ, ಕಾ, ಕಿ, ಕೀ…", "Identify which sound is longer (ಆ/ಈ)."],
+                            speaking: ["Repeat gunita forms after teacher.", "Say 2 gunita letters shown on flash cards."],
+                            reading: ["Read gunita row for ‘ಕ’.", "Spot ‘ಕಿ’ or ‘ಕಾ’ in a line."],
+                            writing: ["Write gunita for one consonant row (ಕ series).", "Copy 5 gunita words (if ready)."]
+                        },
+                        oralQuestions: ["ಕಾ ಅಕ್ಷರವನ್ನು ಓದಿ.", "ಕಿ ಮತ್ತು ಕೀ ನಡುವಿನ ವ್ಯತ್ಯಾಸ ಏನು?", "ಕ ಎಂಬ ಅಕ್ಷರಿಗೆ ಯಾವ ಗುರುತು ಸೇರಿಸಿದರೆ ಕಾ ಆಗುತ್ತದೆ?"],
+                        activity: { title: "Gunita Ladder", description: "Teacher writes: ಕ → ಕಾ → ಕಿ → ಕೀ. Students read it as a group like a ladder (top to bottom)." },
+                        teacherExplanation: [
+                            "Explain: same consonant + vowel sign = new sound (ಗುಣಿತ).",
+                            "Teach only one series at a time (ಕ series).",
+                            "Practice reading first, then writing. Praise neat writing."
+                        ],
+                        videoUrl: "https://www.youtube.com/watch?v=LnX_w7OVRqY"
+                    },
+                    {
+                        title: "ಸರಳ ಪದಗಳು (Simple Words) – Picture Words",
+                        learningObjective: "Students will read and say simple Kannada words with pictures. ವಿದ್ಯಾರ್ಥಿಗಳು ಸರಳ ಪದಗಳನ್ನು ಓದಿ ಹೇಳುತ್ತಾರೆ.",
+                        lsrw: {
+                            listening: ["Listen to teacher say a word and point to picture.", "Identify the first sound in the word."],
+                            speaking: ["Say the word aloud.", "Use the word in a very short sentence (optional)."],
+                            reading: ["Read 5 picture-words (one by one).", "Match word to picture in worksheet."],
+                            writing: ["Copy 3–5 words.", "Underline the first letter in each word."]
+                        },
+                        oralQuestions: ["ಈ ಚಿತ್ರ ಏನು?", "ಈ ಪದವನ್ನು ಓದಿ.", "ಇದರಲ್ಲಿ ಮೊದಲ ಅಕ್ಷರ ಯಾವುದು?"],
+                        activity: { title: "Word-Picture Match", description: "Give 5 pictures and 5 words (cards). Students match correctly in pairs." },
+                        teacherExplanation: [
+                            "Keep words short (2–3 syllables). Read once, students repeat.",
+                            "If needed, explain meaning in simple Kannada/English.",
+                            "Encourage every child to read at least one word."
+                        ],
+                        videoUrl: "https://www.youtube.com/watch?v=lbD6M4VUxzc"
+                    }
+                ]
+            },
+            2: {
+                purpose: "Gunita mastery, word building, and simple sentence speaking/reading.",
+                nature: "Words & Sentences",
+                topics: [
+                    {
+                        title: "ಗುಣಿತ ಅಭ್ಯಾಸ (Gunita Practice) – Ka to La",
+                        learningObjective: "Students will read common gunita letters and form simple words. ವಿದ್ಯಾರ್ಥಿಗಳು ಗುಣಿತಾಕ್ಷರಗಳನ್ನು ಓದಿ ಪದಗಳನ್ನು ರಚಿಸುತ್ತಾರೆ.",
+                        lsrw: {
+                            listening: ["Listen to teacher read gunita rows.", "Identify the sound teacher says (ಕಾ/ಕಿ/ಕು)."],
+                            speaking: ["Read one gunita row aloud.", "Say 3 gunita letters quickly (oral drill)."],
+                            reading: ["Read 10 gunita letters from chart.", "Read 5 gunita words from board."],
+                            writing: ["Write one gunita row neatly.", "Copy 5 gunita words in notebook."]
+                        },
+                        oralQuestions: ["ಗುಣಿತ ಎಂದರೆ ಏನು? (ಸರಳವಾಗಿ)", "ಕು ಅಕ್ಷರವನ್ನು ಓದಿ.", "ಈ ಪದವನ್ನು ಓದಿ: ಕಲಿ / ಕುಲಿ (ಉದಾಹರಣೆ)"],
+                        activity: { title: "Gunita Bingo", description: "Teacher calls a gunita (e.g., ಕಿ). Students mark it on their gunita grid." },
+                        teacherExplanation: [
+                            "Start with revision: swara + vyanjana.",
+                            "Take 1–2 consonant series per day.",
+                            "Emphasize correct pronunciation and neat writing."
+                        ],
+                        videoUrl: "https://www.youtube.com/watch?v=7cAxvHV3BQo"
+                    },
+                    {
+                        title: "ಪದಗಳಿಂದ ವಾಕ್ಯಗಳು (Words to Simple Sentences)",
+                        learningObjective: "Students will speak and read simple 3–5 word Kannada sentences. ವಿದ್ಯಾರ್ಥಿಗಳು ಸರಳ ವಾಕ್ಯಗಳನ್ನು ಓದಿ ಹೇಳುತ್ತಾರೆ.",
+                        lsrw: {
+                            listening: ["Listen to teacher read a sentence.", "Identify the main word (ನಾನು/ಅವನು/ಇದು)."],
+                            speaking: ["Repeat the sentence.", "Answer one question using the sentence pattern."],
+                            reading: ["Read 3 sentences from board.", "Underline familiar words."],
+                            writing: ["Copy 2 sentences.", "Write one sentence with teacher’s help."]
+                        },
+                        oralQuestions: ["ನೀನು ಏನು ಮಾಡುತ್ತೀಯ? (ಉದಾ: ನಾನು ಓದುತ್ತೇನೆ)", "ಈ ವಾಕ್ಯವನ್ನು ಓದಿ.", "ಈ ವಾಕ್ಯದಲ್ಲಿ ಎಷ್ಟು ಪದಗಳಿವೆ?"],
+                        activity: { title: "Sentence Build", description: "Give word cards (ನಾನು / ಶಾಲೆಗೆ / ಹೋಗುತ್ತೇನೆ). Students arrange and read the sentence." },
+                        teacherExplanation: [
+                            "Use patterns: ‘ನಾನು ___’, ‘ಇದು ___’, ‘ಅವನು ___’.",
+                            "Let students speak first; correct gently.",
+                            "Write 1–2 model sentences on board for copy-writing."
+                        ],
+                        videoUrl: "https://www.youtube.com/watch?v=T7B8QpFdOQ8"
+                    },
+                    {
+                        title: "ಓದುವ ಅಭ್ಯಾಸ (Daily Reading Practice)",
+                        learningObjective: "Students will improve reading fluency through daily short passages. ವಿದ್ಯಾರ್ಥಿಗಳು ಪ್ರತಿದಿನ ಓದುವ ಮೂಲಕ ಓದು ಸುಧಾರಿಸುತ್ತಾರೆ.",
+                        lsrw: {
+                            listening: ["Listen to teacher read 4–5 lines.", "Echo-read line by line."],
+                            speaking: ["Read one line aloud.", "Pronounce difficult words with teacher."],
+                            reading: ["Read the passage together.", "Find 3 new words."],
+                            writing: ["Write 3 new words with meaning.", "Copy one short line neatly."]
+                        },
+                        oralQuestions: ["ಈ ಪಾಠದಲ್ಲಿ ಏನು ಇದೆ?", "ಹೊಸ ಪದ ಯಾವುದು?", "ಈ ಸಾಲನ್ನು ಓದಿ."],
+                        activity: { title: "Echo Reading", description: "Teacher reads one line; class repeats together. Then 3 students read individually." },
+                        teacherExplanation: [
+                            "Keep passage short and familiar. Repeat for 2–3 days.",
+                            "Praise effort; don’t over-correct.",
+                            "Ask meaning questions in simple Kannada."
+                        ],
+                        videoUrl: "https://www.youtube.com/watch?v=BAXbCSTSz50"
+                    }
+                ]
+            },
+            3: {
+                purpose: "Reading comprehension via poems/stories and short written answers (1–2 lines).",
+                nature: "Poems & Stories",
+                topics: [
+                    {
+                        title: "ಪದ್ಯ ಪಠಣೆ (Poem Recitation) – Rhythm & Meaning",
+                        learningObjective: "Students will recite a simple poem with correct pronunciation and explain meaning. ವಿದ್ಯಾರ್ಥಿಗಳು ಪದ್ಯವನ್ನು ಓದಿ ಅರ್ಥ ತಿಳಿಯುತ್ತಾರೆ.",
+                        lsrw: {
+                            listening: ["Listen to poem with actions.", "Identify rhyming sounds."],
+                            speaking: ["Recite 2–4 lines.", "Say meaning in simple words."],
+                            reading: ["Read poem line by line.", "Underline repeated words."],
+                            writing: ["Copy 2 lines neatly.", "Write 3 key words from poem."]
+                        },
+                        oralQuestions: ["ಪದ್ಯದ ವಿಷಯ ಏನು?", "ನಿಮಗೆ ಯಾವ ಸಾಲು ಇಷ್ಟ?", "ಈ ಪದದ ಅರ್ಥ ಏನು?"],
+                        activity: { title: "Action Recitation", description: "Teacher assigns actions for 3 key words; students recite with actions." },
+                        teacherExplanation: [
+                            "Teach poem in small parts (2 lines at a time).",
+                            "Explain meaning with gestures and examples.",
+                            "Encourage all children to recite together."
+                        ],
+                        videoUrl: "https://www.youtube.com/watch?v=WB-v8kuysoo"
+                    },
+                    {
+                        title: "ಸರಳ ಕಥೆ (Simple Story) – Who/What/Why",
+                        learningObjective: "Students will listen to a short story and answer who/what/why orally. ವಿದ್ಯಾರ್ಥಿಗಳು ಕಥೆ ಕೇಳಿ ಪ್ರಶ್ನೆಗಳಿಗೆ ಉತ್ತರಿಸುತ್ತಾರೆ.",
+                        lsrw: {
+                            listening: ["Listen to story narration.", "Identify characters."],
+                            speaking: ["Answer who/what/why questions.", "Retell 2 lines of the story."],
+                            reading: ["Read 4–5 simple sentences.", "Match sentence to picture."],
+                            writing: ["Write 3 key words.", "Write 1 line about favourite character."]
+                        },
+                        oralQuestions: ["ಕಥೆಯಲ್ಲಿ ಯಾರು ಇದ್ದರು?", "ಏನು ನಡೆಯಿತು?", "ಏಕೆ ಅಂತೆ ಆಯಿತು?"],
+                        activity: { title: "Story Sequencing", description: "Give 3 pictures from the story. Students arrange in order and describe." },
+                        teacherExplanation: [
+                            "Tell story with voice variation and pauses.",
+                            "Ask one question after each part.",
+                            "Allow students to answer in simple Kannada; help with sentence framing."
+                        ],
+                        videoUrl: "https://www.youtube.com/watch?v=sdaXUmmztpg"
+                    },
+                    {
+                        title: "ಶಬ್ದಗಳು & ಶ್ರುತಲೇಖನ (Words & Dictation)",
+                        learningObjective: "Students will improve spelling and handwriting through weekly dictation. ವಿದ್ಯಾರ್ಥಿಗಳು ಸರಿಯಾದ ಸ್ಪೆಲಿಂಗ್ ಮತ್ತು ಬರವಣಿಗೆ ಕಲಿಯುತ್ತಾರೆ.",
+                        lsrw: {
+                            listening: ["Listen carefully to each word.", "Repeat once before writing."],
+                            speaking: ["Spell orally (optional).", "Say the word in a sentence."],
+                            reading: ["Read dictation words from board after correction.", "Find and correct mistakes."],
+                            writing: ["Write 8–10 words (weekly).", "Rewrite wrong words neatly."]
+                        },
+                        oralQuestions: ["ಈ ಪದವನ್ನು ಹೇಗೆ ಬರೆಯುತ್ತೇವೆ?", "ಈ ಪದದ ಅರ್ಥ ಏನು?", "ಈ ಪದವನ್ನು ವಾಕ್ಯದಲ್ಲಿ ಬಳಸಿ."],
+                        activity: { title: "Peer Check", description: "Students exchange notebooks and tick correct spellings with teacher guidance." },
+                        teacherExplanation: [
+                            "Say the word → pause → say again in a sentence.",
+                            "Promote neat writing: spacing, margins, line usage.",
+                            "Correct kindly; ask students to rewrite wrong words."
+                        ],
+                        videoUrl: "https://www.youtube.com/watch?v=lbD6M4VUxzc"
+                    }
+                ]
+            },
+            4: {
+                purpose: "Lessons/poems with comprehension, vocabulary, and short writing.",
+                nature: "Comprehension & Writing",
+                topics: [
+                    {
+                        title: "ಪಾಠ ಓದು (Lesson Reading) – Line by line",
+                        learningObjective: "Students will read a lesson, learn new words, and answer 3–5 questions. ವಿದ್ಯಾರ್ಥಿಗಳು ಪಾಠ ಓದಿ ಪ್ರಶ್ನೆಗಳಿಗೆ ಉತ್ತರಿಸುತ್ತಾರೆ.",
+                        lsrw: {
+                            listening: ["Listen to teacher read paragraph.", "Identify difficult words."],
+                            speaking: ["Read one paragraph aloud.", "Answer oral comprehension questions."],
+                            reading: ["Read silently for 2 minutes.", "Underline new words and copy to word bank."],
+                            writing: ["Write 2 one-line answers.", "Write meaning of 3 new words (teacher help)."]
+                        },
+                        oralQuestions: ["ಪಾಠದ ಮುಖ್ಯ ವಿಷಯ ಏನು?", "ಹೊಸ ಪದ ಯಾವುದು?", "ನಾಯಕ/ಪಾತ್ರ ಯಾರು?"],
+                        activity: { title: "Word Bank Wall", description: "Create a class word bank: students add 1 new word + meaning each week." },
+                        teacherExplanation: [
+                            "Read paragraph, explain meaning simply, then students repeat.",
+                            "Ask comprehension questions and encourage full-sentence answers.",
+                            "Maintain a word bank for revision."
+                        ],
+                        videoUrl: "https://www.youtube.com/watch?v=yMUEqrXqLyY"
+                    },
+                    {
+                        title: "ಪದ್ಯ + ಅರ್ಥ (Poem with Meaning)",
+                        learningObjective: "Students will recite a poem and explain meaning in simple Kannada. ವಿದ್ಯಾರ್ಥಿಗಳು ಪದ್ಯವನ್ನು ಪಠಿಸಿ ಅರ್ಥ ತಿಳಿಯುತ್ತಾರೆ.",
+                        lsrw: {
+                            listening: ["Listen to poem.", "Identify repeated words."],
+                            speaking: ["Recite poem.", "Explain meaning in 1–2 sentences."],
+                            reading: ["Read poem from textbook.", "Mark difficult words."],
+                            writing: ["Copy 2 lines.", "Write 3-word summary (keywords)."]
+                        },
+                        oralQuestions: ["ಪದ್ಯದಲ್ಲಿ ಏನು ಹೇಳಲಾಗಿದೆ?", "ಯಾವ ಪದಗಳು ಪುನರಾವರ್ತನೆ ಆಗಿವೆ?", "ನಿಮಗೆ ಯಾವ ಸಾಲು ಇಷ್ಟ?"],
+                        activity: { title: "Chorus Recitation", description: "Split class into 2 groups. Each group recites alternate lines." },
+                        teacherExplanation: [
+                            "Teach pronunciation first, then meaning.",
+                            "Use examples from daily life to explain poem message.",
+                            "Encourage group recitation for confidence."
+                        ],
+                        videoUrl: "https://www.youtube.com/watch?v=WB-v8kuysoo"
+                    }
+                ]
+            },
+            5: {
+                purpose: "Grammar basics + letter writing + structured answers, continuing lesson/poem coverage.",
+                nature: "Grammar & Letters",
+                topics: [
+                    {
+                        title: "ಪತ್ರ ಲೇಖನ (Letter Writing) – Leave/Application",
+                        learningObjective: "Students will learn the simple format of a letter and write one leave letter. ವಿದ್ಯಾರ್ಥಿಗಳು ಸರಳ ಪತ್ರ ಬರೆಯಲು ಕಲಿಯುತ್ತಾರೆ.",
+                        lsrw: {
+                            listening: ["Listen to teacher explain letter parts (date, salutation, body).", "Listen to a model letter reading."],
+                            speaking: ["Say the parts of a letter.", "Practice a polite request sentence."],
+                            reading: ["Read a sample letter.", "Identify date/subject/signature."],
+                            writing: ["Write one leave letter (guided).", "Rewrite neatly after correction."]
+                        },
+                        oralQuestions: ["ಪತ್ರದಲ್ಲಿ ಮೊದಲಿಗೆ ಏನು ಬರೆಯಬೇಕು?", "ಯಾರಿಗೆ ಪತ್ರ ಬರೆಯುತ್ತಿದ್ದೇವೆ?", "ಪತ್ರದ ಕೊನೆಯಲ್ಲಿ ಏನು?"],
+                        activity: { title: "Fill the Blanks Letter", description: "Teacher gives a letter template with blanks. Students fill date/name/reason." },
+                        teacherExplanation: [
+                            "Show a simple format on board and label each part.",
+                            "Write together as a class once, then students copy and personalize.",
+                            "Focus on neat handwriting and polite language."
+                        ],
+                        videoUrl: "https://www.youtube.com/watch?v=OfbXxiil2NQ"
+                    },
+                    {
+                        title: "ವ್ಯಾಕರಣ ಮೂಲಭೂತಗಳು (Grammar Basics) – Noun/Verb Intro",
+                        learningObjective: "Students will identify simple nouns and verbs from sentences. ವಿದ್ಯಾರ್ಥಿಗಳು ನಾಮಪದ ಮತ್ತು ಕ್ರಿಯಾಪದವನ್ನು ಗುರುತಿಸುತ್ತಾರೆ.",
+                        lsrw: {
+                            listening: ["Listen to teacher read 5 sentences.", "Identify action word (verb)."],
+                            speaking: ["Say one noun and one verb from the sentence.", "Create one sentence using a verb."],
+                            reading: ["Read 5 simple sentences.", "Circle nouns and underline verbs."],
+                            writing: ["Write 5 nouns + 5 verbs.", "Write 2 sentences and mark noun/verb."]
+                        },
+                        oralQuestions: ["ನಾಮಪದ ಎಂದರೆ ಏನು? (ಉದಾಹರಣೆ)", "ಕ್ರಿಯಾಪದ ಎಂದರೆ ಏನು? (ಉದಾಹರಣೆ)", "ಈ ವಾಕ್ಯದಲ್ಲಿ ಕ್ರಿಯಾಪದ ಯಾವುದು?"],
+                        activity: { title: "Noun–Verb Sorting", description: "Give word cards. Students sort into ‘things’ (nouns) and ‘actions’ (verbs)." },
+                        teacherExplanation: [
+                            "Explain with examples from classroom: ‘ಮಗ’, ‘ಪುಸ್ತಕ’ (nouns) and ‘ಓದು’, ‘ಬರೆ’ (verbs).",
+                            "Keep it practical and simple; avoid heavy theory.",
+                            "Do oral drills before writing."
+                        ],
+                        videoUrl: "https://www.youtube.com/watch?v=gUsHvz6DOqs"
+                    }
+                ]
+            }
+        };
+
+
+                // -----------------------------
+        // Kannada Rendering (keeps existing English functions untouched)
+        // Uses SAME topic-page template as English (Objective + LSRW + Questions + Activity + Teacher Explanation + Video)
+        // -----------------------------
+        function getYouTubeEmbedSrc(url) {
+            if (!url) return "";
+            // Already embed
+            if (url.includes("youtube.com/embed/")) return url;
+            // Playlist to embed videoseries
+            if (url.includes("youtube.com/playlist?list=")) {
+                const list = url.split("list=")[1].split("&")[0];
+                return `https://www.youtube.com/embed/videoseries?list=${list}`;
+            }
+            // videoseries already
+            if (url.includes("youtube.com/embed/videoseries")) return url;
+            // youtu.be/<id>
+            if (url.includes("youtu.be/")) {
+                const id = url.split("youtu.be/")[1].split(/[?&]/)[0];
+                return `https://www.youtube.com/embed/${id}`;
+            }
+            // watch?v=<id>
+            if (url.includes("watch?v=")) {
+                const id = url.split("watch?v=")[1].split("&")[0];
+                return `https://www.youtube.com/embed/${id}`;
+            }
+            return url; // fallback
+        }
+
+        function renderKannadaStandard(stdNum) {
+            currentSubject = 'kannada';
+            currentStandard = stdNum; // reuse existing global, safe
+            const data = kannadaCurriculum[stdNum];
+            const container = document.getElementById('standard-content');
+            if (!data || !container) return;
+
+            let html = `
+                <button onclick="showPage('class-listing-kannada')" class="mb-4 text-sm text-indigo-700 font-medium no-print">← Back to Kannada Classes</button>
+                <div class="bg-indigo-50 p-6 rounded-xl border border-indigo-100 mb-8">
+                    <h1 class="text-3xl font-bold text-indigo-900">Class ${stdNum} Kannada Overview</h1>
+                    <div class="mt-4 space-y-3">
+                        <p><strong>Purpose:</strong> ${data.purpose}</p>
+                        <p><strong>Skills Focus:</strong> Listening, Speaking, Reading, Writing (LSRW)</p>
+                        <p><strong>Nature of Learning:</strong> ${data.nature || "Primary Kannada"}</p>
+                        <p><strong>Teacher Tip:</strong> Read aloud first, then students repeat. Encourage daily handwriting drills.</p>
+                    </div>
+                </div>
+                <h2 class="text-xl font-bold mb-4">Topic Listing</h2>
+                <div class="grid gap-3">
+            `;
+
+            data.topics.forEach((topic, index) => {
+                html += `
+                    <button onclick="renderKannadaTopic(${stdNum}, ${index})" class="w-full text-left p-4 bg-white border border-slate-200 rounded-lg hover:border-indigo-400 transition-colors shadow-sm font-medium">
+                        ${topic.title}
+                    </button>
+                `;
+            });
+
+            html += `</div>`;
+            container.innerHTML = html;
+            showPage('standard-view');
+        }
+
+        function renderKannadaTopic(stdNum, topicIndex) {
+            const topic = kannadaCurriculum[stdNum]?.topics?.[topicIndex];
+            const container = document.getElementById('topic-content');
+            if (!topic || !container) return;
+
+            const l = (topic.lsrw && topic.lsrw.listening) ? topic.lsrw.listening : [];
+            const sp = (topic.lsrw && topic.lsrw.speaking) ? topic.lsrw.speaking : [];
+            const r = (topic.lsrw && topic.lsrw.reading) ? topic.lsrw.reading : [];
+            const w = (topic.lsrw && topic.lsrw.writing) ? topic.lsrw.writing : [];
+
+            const oral = (topic.oralQuestions || []).map(q => `<li>${q}</li>`).join("");
+            const teacherPara = (topic.teacherExplanation || []).map(p => `<p>${p}</p>`).join("");
+
+            const embedSrc = getYouTubeEmbedSrc(topic.videoUrl);
+
+            container.innerHTML = `
+                <div class="bg-white p-6 md:p-8 rounded-xl shadow-md border border-slate-200">
+                    <div class="flex justify-between items-start mb-6">
+                        <h1 class="text-3xl font-bold text-indigo-900">${topic.title}</h1>
+                        <button onclick="window.print()" class="no-print bg-slate-100 text-slate-700 px-3 py-1 rounded text-xs border border-slate-300 font-bold">Print Page</button>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="space-y-6">
+                            <section>
+                                <h3 class="text-lg font-bold border-l-4 border-indigo-600 pl-2 mb-2">Learning Objective</h3>
+                                <p class="text-sm italic">${topic.learningObjective || ""}</p>
+                            </section>
+
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="p-3 bg-slate-50 rounded border border-slate-100">
+                                    <h4 class="font-bold text-xs uppercase text-slate-500">Listening</h4>
+                                    <ul class="text-sm list-disc ml-4 mt-1">${l.map(x => `<li>${x}</li>`).join("")}</ul>
+                                </div>
+                                <div class="p-3 bg-slate-50 rounded border border-slate-100">
+                                    <h4 class="font-bold text-xs uppercase text-slate-500">Speaking</h4>
+                                    <ul class="text-sm list-disc ml-4 mt-1">${sp.map(x => `<li>${x}</li>`).join("")}</ul>
+                                </div>
+                                <div class="p-3 bg-slate-50 rounded border border-slate-100">
+                                    <h4 class="font-bold text-xs uppercase text-slate-500">Reading</h4>
+                                    <ul class="text-sm list-disc ml-4 mt-1">${r.map(x => `<li>${x}</li>`).join("")}</ul>
+                                </div>
+                                <div class="p-3 bg-slate-50 rounded border border-slate-100">
+                                    <h4 class="font-bold text-xs uppercase text-slate-500">Writing</h4>
+                                    <ul class="text-sm list-disc ml-4 mt-1">${w.map(x => `<li>${x}</li>`).join("")}</ul>
+                                </div>
+                            </div>
+
+                            <section class="bg-indigo-50 p-4 rounded-lg">
+                                <h3 class="text-lg font-bold text-indigo-900 mb-2">Teacher Explanation</h3>
+                                <div class="text-sm space-y-2">${teacherPara}</div>
+                            </section>
+                        </div>
+
+                        <div class="space-y-6">
+                            <section>
+                                <h3 class="text-lg font-bold mb-2">Classroom Questions (Oral)</h3>
+                                <ol class="list-decimal ml-5 text-sm space-y-2">${oral}</ol>
+                            </section>
+
+                            <section>
+                                <h3 class="text-lg font-bold mb-2">Classroom Activity</h3>
+                                <div class="p-4 border-2 border-dashed border-slate-300 rounded-lg text-sm bg-yellow-50">
+                                    <strong>${topic.activity?.title || "Activity"}:</strong> ${topic.activity?.description || ""}
+                                </div>
+                            </section>
+
+                            <section class="no-print">
+                                <h3 class="text-lg font-bold mb-2">Video Resource</h3>
+                                <div class="video-container mb-2">
+                                    <iframe src="${embedSrc}" frameborder="0" allowfullscreen></iframe>
+                                </div>
+                                <p class="text-[10px] text-slate-500 italic mb-2">“If video does not play, teacher may skip and continue lesson orally.”</p>
+                                <a href="${topic.videoUrl}" target="_blank" class="text-xs text-indigo-600 underline break-all">${topic.videoUrl}</a>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Override existing back button behavior (without editing HTML)
+            const backBtn = document.querySelector("#page-topic-detail button[onclick='goBackToStandard()']");
+            if (backBtn) backBtn.setAttribute("onclick", `renderKannadaStandard(${stdNum})`);
+
+            showPage("topic-detail");
+        }
+
+        // Runtime Activation: Turn existing Kannada card from "Coming Soon" to Active (without modifying existing HTML)
+        // -----------------------------
+        
+        // -----------------------------
+        // Subject tracking + safe back-button restore for English flows
+        // -----------------------------
+        (function(){
+            const _renderStandard = renderStandard;
+            const _renderTopic = renderTopic;
+            renderStandard = function(stdNum){
+                currentSubject = "english";
+                // restore default back behavior on topic page for English
+                const backBtn = document.querySelector("#page-topic-detail button");
+                if (backBtn) backBtn.setAttribute("onclick", "goBackToStandard()");
+                return _renderStandard(stdNum);
+            }
+            renderTopic = function(topicIndex){
+                currentSubject = "english";
+                const backBtn = document.querySelector("#page-topic-detail button");
+                if (backBtn) backBtn.setAttribute("onclick", "goBackToStandard()");
+                return _renderTopic(topicIndex);
+            }
+        })();
+
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const subjectCards = Array.from(document.querySelectorAll("#page-subjects > div > div"));
+            const kannadaCard = subjectCards.find(card => (card.innerText || "").includes("Kannada") && (card.innerText || "").includes("Coming Soon"));
+            if (kannadaCard) {
+                kannadaCard.classList.remove("card-disabled");
+                kannadaCard.classList.add("border-2","border-indigo-200","hover:shadow-md","cursor-pointer","transition-all","border-l-8","border-l-indigo-600");
+                kannadaCard.innerHTML = `
+                    <h2 class="text-xl font-bold text-indigo-900">Kannada</h2>
+                    <p class="text-sm text-slate-600 mt-2">Primary Kannada (Std I-V) - Reading, Writing & Grammar</p>
+                    <span class="inline-block mt-4 text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Active</span>
+                `;
+                kannadaCard.onclick = () => showPage("class-listing-kannada");
+            }
+        });
+
+</script>
+</body>
+</html>
