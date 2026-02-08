@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Portal - Primary Education Karnataka</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Kannada:wght@400;700&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Noto Sans', 'Noto Sans Kannada', sans-serif; 
+            background-color: #f8fafc; 
+        }
+        .card-disabled { opacity: 0.6; cursor: not-allowed; grayscale: 100%; }
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background: #000; border-radius: 8px; }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        @media print {
+            .no-print { display: none; }
+            .print-area { display: block !important; width: 100%; }
+        }
+        .bilingual-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        @media (max-width: 768px) {
+            .bilingual-grid { grid-template-columns: 1fr; gap: 1rem; }
+        }
+        /* Class for hiding based on toggle */
+        .lang-hidden { display: none; }
+    </style>
+</head>
+<body class="text-slate-800">
+
+    <!-- NAVIGATION MENU -->
+    <nav class="bg-indigo-900 text-white shadow-md sticky top-0 z-50 no-print">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center py-3">
+                <div class="font-bold text-xl mb-2 md:mb-0">EduSupport Karnataka</div>
+                <div class="flex flex-wrap justify-center gap-4 text-sm font-medium">
+                    <button onclick="showPage('handbook')" class="hover:text-yellow-400 border-b-2 border-transparent hover:border-yellow-400 pb-1">Teacher Handbook</button>
+                    <button onclick="showPage('subjects')" class="hover:text-yellow-400 border-b-2 border-transparent hover:border-yellow-400 pb-1">Subjects</button>
+                    <button onclick="showPage('content-info')" class="hover:text-yellow-400 border-b-2 border-transparent hover:border-yellow-400 pb-1">How it Works</button>
+                    <button onclick="showPage('assessment')" class="hover:text-yellow-400 border-b-2 border-transparent hover:border-yellow-400 pb-1">Assessment</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="max-w-6xl mx-auto px-4 py-8">
+
+        <!-- PAGE: BILINGUAL TEACHER HANDBOOK -->
+        <div id="page-handbook" class="page-content">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 border-b-2 border-indigo-900 pb-4 gap-4">
+                <h1 class="text-2xl font-bold">ಶಿಕ್ಷಕರ ಹ್ಯಾಂಡ್‌ಬುಕ್ | Teacher Handbook</h1>
+                
+                <div class="flex items-center gap-4 no-print">
+                    <!-- Toggle Switch -->
+                    <div class="bg-slate-200 p-1 rounded-lg flex items-center text-xs font-bold">
+                        <button id="toggle-kn" onclick="toggleHandbookLang('kn')" class="px-3 py-1.5 rounded-md bg-indigo-600 text-white transition-all">ಕನ್ನಡ First</button>
+                        <button id="toggle-en" onclick="toggleHandbookLang('en')" class="px-3 py-1.5 rounded-md text-slate-600 transition-all">English First</button>
+                    </div>
+                    <button onclick="window.print()" class="bg-indigo-100 text-indigo-700 px-4 py-1.5 rounded text-sm font-bold border border-indigo-200">Print</button>
+                </div>
+            </div>
+
+            <div id="handbook-container" class="space-y-12 print-area">
+                <!-- Section 1: Objective -->
+                <section class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                    <div class="bilingual-grid" id="section-1">
+                        <div class="kn-block order-1">
+                            <h2 class="text-xl font-bold text-indigo-800 mb-3">1. ಈ ಹ್ಯಾಂಡ್‌ಬುಕ್‌ನ ಉದ್ದೇಶ</h2>
+                            <p class="leading-relaxed text-slate-700">ಈ ಶಿಕ್ಷಕರ ಹ್ಯಾಂಡ್‌ಬುಕ್‌ ಅನ್ನು ಸರ್ಕಾರಿ ಪ್ರಾಥಮಿಕ ಶಾಲಾ ಶಿಕ್ಷಕರಿಗೆ ಪಾಠ ತಯಾರಿಕೆಯನ್ನು ಸುಲಭಗೊಳಿಸಲು ರೂಪಿಸಲಾಗಿದೆ. ಶಿಕ್ಷಕರು ಒಂದೇ ಸಮಯದಲ್ಲಿ ಹಲವು ತರಗತಿಗಳು ಮತ್ತು ವಿಷಯಗಳನ್ನು ನೋಡಿಕೊಳ್ಳಬೇಕಾಗಿರುವುದರಿಂದ, ಪಠ್ಯಪುಸ್ತಕದ ಹೊರತಾಗಿ ಸರಳ ಮತ್ತು ಸ್ಪಷ್ಟ ಮಾರ್ಗದರ್ಶನ ಅಗತ್ಯವಿರುತ್ತದೆ. ಈ ಹ್ಯಾಂಡ್‌ಬುಕ್‌ನಲ್ಲಿ ಪಠ್ಯಕ್ರಮಕ್ಕೆ ಹೊಂದುವ ಸರಳ ವಿವರಣೆಗಳು, ತರಗತಿಯಲ್ಲಿ ಹೇಳುವಂತೆ ಬರೆಯಲಾದ ಶಿಕ್ಷಕರ ಟಿಪ್ಪಣಿಗಳು, ಉದಾಹರಣೆಗಳು, ಪ್ರಶ್ನೆಗಳು ಮತ್ತು ಚಟುವಟಿಕೆಗಳನ್ನು ಒಟ್ಟಿಗೆ ನೀಡಲಾಗಿದೆ.</p>
+                        </div>
+                        <div class="en-block order-2 border-l-0 md:border-l md:pl-8 border-slate-100">
+                            <h2 class="text-xl font-bold text-indigo-800 mb-3">1. Purpose of this Handbook</h2>
+                            <p class="leading-relaxed text-slate-600 italic">This handbook is designed to simplify lesson preparation for government primary school teachers. Since teachers often manage multiple classes and subjects simultaneously, clear guidance beyond the textbook is essential. It includes curriculum-aligned explanations, teacher notes, examples, questions, and activities in one place.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 2: Usage -->
+                <section class="bg-indigo-50 p-6 rounded-xl border border-indigo-100">
+                    <div class="bilingual-grid" id="section-2">
+                        <div class="kn-block order-1">
+                            <h2 class="text-xl font-bold text-indigo-800 mb-3">2. ಈ ಹ್ಯಾಂಡ್‌ಬುಕ್ ಅನ್ನು ಹೇಗೆ ಬಳಸಬೇಕು</h2>
+                            <ul class="list-disc ml-5 space-y-2 text-slate-700">
+                                <li><strong>ಪಾಠಕ್ಕೂ ಮೊದಲು:</strong> ವಿಷಯದ ಸರಳ ವಿವರಣೆಯನ್ನು ಓದಿ ಮುಖ್ಯ ಅಂಶಗಳನ್ನು ಅರ್ಥಮಾಡಿಕೊಳ್ಳಿ.</li>
+                                <li><strong>ಪಾಠದ ಸಮಯದಲ್ಲಿ:</strong> ಉದಾಹರಣೆಗಳು ಮತ್ತು ಚಟುವಟಿಕೆಗಳನ್ನು ನೇರವಾಗಿ ಬಳಸಿ.</li>
+                                <li><strong>ಪಾಠದ ನಂತರ:</strong> ವಿದ್ಯಾರ್ಥಿಗಳ ಗೊಂದಲಗಳನ್ನು ಪರಿಶೀಲಿಸಿ ಮುಂದಿನ ಪಾಠಕ್ಕೆ ತಯಾರಾಗಿ.</li>
+                            </ul>
+                        </div>
+                        <div class="en-block order-2 border-l-0 md:border-l md:pl-8 border-slate-100">
+                            <h2 class="text-xl font-bold text-indigo-800 mb-3">2. How to use this Handbook</h2>
+                            <ul class="list-disc ml-5 space-y-2 text-slate-600 italic">
+                                <li><strong>Before Class:</strong> Read the simple explanation to grasp key concepts quickly.</li>
+                                <li><strong>During Class:</strong> Directly use provided examples and activities.</li>
+                                <li><strong>After Class:</strong> Review student confusion points to prepare for future lessons.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 4: Structure -->
+                <section class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                    <div class="bilingual-grid" id="section-4">
+                        <div class="kn-block order-1">
+                            <h2 class="text-xl font-bold text-indigo-800 mb-4">4. ಪಾಠದ ಪುಟದ ರಚನೆ</h2>
+                            <div class="space-y-4">
+                                <div class="border-b pb-2">
+                                    <h4 class="font-bold text-indigo-600">A. ವಿಷಯ ಪರಿಚಯ</h4>
+                                    <p class="text-sm">ಪಾಠದ ವಿಷಯ ಮತ್ತು ಉದ್ದೇಶದ ಸಂಕ್ಷಿಪ್ತ ವಿವರಣೆ.</p>
+                                </div>
+                                <div class="border-b pb-2">
+                                    <h4 class="font-bold text-indigo-600">C. ಶಿಕ್ಷಕರ ಟಿಪ್ಪಣಿಗಳು</h4>
+                                    <p class="text-sm">ಸರಳ ಪದಗಳಲ್ಲಿ ಹಂತ ಹಂತವಾಗಿ ವಿಷಯದ ವಿವರಣೆ.</p>
+                                </div>
+                                <div class="border-b pb-2">
+                                    <h4 class="font-bold text-indigo-600">D. ಕನ್ನಡ ಸಹಾಯ</h4>
+                                    <p class="text-sm">ಪ್ರಮುಖ ಪದಗಳು ಮತ್ತು ಕಲ್ಪನೆಗಳನ್ನು ಸರಳ ಕನ್ನಡದಲ್ಲಿ ನೀಡಲಾಗಿದೆ.</p>
+                                </div>
+                                <div class="border-b pb-2">
+                                    <h4 class="font-bold text-indigo-600">H. ತರಗತಿ ಚಟುವಟಿಕೆ</h4>
+                                    <p class="text-sm">ಕಡಿಮೆ ಸಮಯದಲ್ಲಿ ಮಾಡಬಹುದಾದ ಸರಳ ಚಟುವಟಿಕೆಗಳು.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="en-block order-2 border-l-0 md:border-l md:pl-8 border-slate-100">
+                            <h2 class="text-xl font-bold text-indigo-800 mb-4">4. Structure of a Lesson Page</h2>
+                            <div class="space-y-4 italic text-slate-600">
+                                <div class="border-b pb-2">
+                                    <h4 class="font-bold text-indigo-400">A. Introduction</h4>
+                                    <p class="text-sm">Brief context on why the topic is important for students.</p>
+                                </div>
+                                <div class="border-b pb-2">
+                                    <h4 class="font-bold text-indigo-400">C. Teacher Notes</h4>
+                                    <p class="text-sm">Step-by-step explanation using simple classroom language.</p>
+                                </div>
+                                <div class="border-b pb-2">
+                                    <h4 class="font-bold text-indigo-400">D. Kannada Support</h4>
+                                    <p class="text-sm">Key terms and concepts translated for dual-language teaching.</p>
+                                </div>
+                                <div class="border-b pb-2">
+                                    <h4 class="font-bold text-indigo-400">H. Classroom Activities</h4>
+                                    <p class="text-sm">Simple, low-resource activities to engage students.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Conclusion -->
+                <section class="text-center py-8 bg-slate-50 rounded-xl">
+                    <h2 class="font-bold text-indigo-900 mb-2">10. ಸಮಾರೋಪ | Conclusion</h2>
+                    <p class="max-w-2xl mx-auto px-4 text-slate-700 font-medium mb-2">ಈ ಹ್ಯಾಂಡ್‌ಬುಕ್ ಶಿಕ್ಷಕರ ಪಾಠ ತಯಾರಿಕೆಯನ್ನು ಸರಳಗೊಳಿಸಿ, ವಿದ್ಯಾರ್ಥಿಗಳಿಗೆ ವಿಷಯವನ್ನು ಸ್ಪಷ್ಟವಾಗಿ ಅರ್ಥವಾಗುವಂತೆ ಮಾಡುತ್ತದೆ.</p>
+                    <p class="max-w-2xl mx-auto px-4 text-slate-500 italic text-sm">This handbook simplifies teaching, making concepts clear for both teachers and students.</p>
+                </section>
+            </div>
+        </div>
+
+        <!-- PAGE: SUBJECTS -->
+        <div id="page-subjects" class="page-content hidden">
+            <h1 class="text-2xl font-bold mb-6 border-b-2 border-indigo-900 pb-2">Select Subject | ವಿಷಯವನ್ನು ಆರಿಸಿ</h1>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- English - Active -->
+                <div onclick="showPage('class-listing')" class="bg-white border-2 border-indigo-200 p-6 rounded-xl shadow-sm hover:shadow-md cursor-pointer transition-all border-l-8 border-l-indigo-600">
+                    <h2 class="text-xl font-bold text-indigo-900">English</h2>
+                    <p class="text-sm text-slate-600 mt-2">Value Education & LSRW Skills (Std I-V)</p>
+                    <span class="inline-block mt-4 text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Active</span>
+                </div>
+                <!-- Kannada - Active -->
+                <div onclick="showPage('class-listing-kannada')" class="bg-white border-2 border-indigo-200 p-6 rounded-xl shadow-sm hover:shadow-md cursor-pointer transition-all border-l-8 border-l-indigo-600">
+                    <h2 class="text-xl font-bold text-indigo-900">Kannada | ಕನ್ನಡ</h2>
+                    <p class="text-sm text-slate-600 mt-2">ಪ್ರಾಥಮಿಕ ಕನ್ನಡ (ತರಗತಿ 1-5) - ಓದು ಮತ್ತು ಬರಹ</p>
+                    <span class="inline-block mt-4 text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Active</span>
+                </div>
+                <!-- Maths - Disabled -->
+                <div class="card-disabled bg-white border border-slate-200 p-6 rounded-xl shadow-sm">
+                    <h2 class="text-xl font-bold text-slate-400">Mathematics</h2>
+                    <p class="text-sm mt-2">Coming Soon</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ASSESSMENT & CONTENT INFO PAGES -->
+        <div id="page-content-info" class="page-content hidden">
+            <h1 class="text-2xl font-bold mb-6">How Content is Organised</h1>
+            <div class="bg-white p-6 rounded-lg shadow-sm border border-slate-200">
+                <p>Curriculum is tailored for cognitive levels of primary students in Government Schools.</p>
+            </div>
+        </div>
+        
+        <div id="page-class-listing" class="page-content hidden">
+            <h1 class="text-2xl font-bold mb-6">English - Select Class</h1>
+            <div class="space-y-4">
+                <button onclick="renderStandard(1)" class="w-full text-left p-4 bg-white border rounded-lg hover:bg-indigo-50">Class 1</button>
+                <button onclick="renderStandard(2)" class="w-full text-left p-4 bg-white border rounded-lg hover:bg-indigo-50">Class 2</button>
+                <button onclick="renderStandard(3)" class="w-full text-left p-4 bg-white border rounded-lg hover:bg-indigo-50">Class 3</button>
+                <button onclick="renderStandard(4)" class="w-full text-left p-4 bg-white border rounded-lg hover:bg-indigo-50">Class 4</button>
+                <button onclick="renderStandard(5)" class="w-full text-left p-4 bg-white border rounded-lg hover:bg-indigo-50">Class 5</button>
+            </div>
+        </div>
+
+        <div id="page-class-listing-kannada" class="page-content hidden">
+            <h1 class="text-2xl font-bold mb-6">ಕನ್ನಡ - ತರಗತಿಯನ್ನು ಆರಿಸಿ</h1>
+            <div class="space-y-4">
+                <button onclick="renderKannadaStandard(1)" class="w-full text-left p-4 bg-white border rounded-lg hover:bg-indigo-50">ತರಗತಿ 1</button>
+                <button onclick="renderKannadaStandard(2)" class="w-full text-left p-4 bg-white border rounded-lg hover:bg-indigo-50">ತರಗತಿ 2</button>
+                <button onclick="renderKannadaStandard(3)" class="w-full text-left p-4 bg-white border rounded-lg hover:bg-indigo-50">ತರಗತಿ 3</button>
+                <button onclick="renderKannadaStandard(4)" class="w-full text-left p-4 bg-white border rounded-lg hover:bg-indigo-50">ತರಗತಿ 4</button>
+                <button onclick="renderKannadaStandard(5)" class="w-full text-left p-4 bg-white border rounded-lg hover:bg-indigo-50">ತರಗತಿ 5</button>
+            </div>
+        </div>
+
+        <div id="page-standard-view" class="page-content hidden">
+            <div id="standard-content"></div>
+        </div>
+
+        <div id="page-topic-detail" class="page-content hidden">
+            <button onclick="goBackToStandard()" class="mb-4 text-sm text-indigo-700 font-medium no-print">← Back to Topics</button>
+            <div id="topic-content" class="print-area"></div>
+        </div>
+
+        <div id="page-assessment" class="page-content hidden">
+            <h1 class="text-2xl font-bold">Assessment & Coverage</h1>
+            <p class="mt-4 text-slate-600">Tracking progress for Std I-V.</p>
+        </div>
+
+    </main>
+
+    <footer class="bg-slate-100 border-t border-slate-200 py-6 mt-12 no-print">
+        <div class="max-w-6xl mx-auto px-4 text-center text-xs text-slate-500">
+            <p>Government of Karnataka - Educational Resources</p>
+            <p class="mt-1">For teacher use only. Low-bandwidth optimized.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Shared Logic
+        function showPage(pageId) {
+            document.querySelectorAll('.page-content').forEach(p => p.classList.add('hidden'));
+            document.getElementById('page-' + pageId).classList.remove('hidden');
+            window.scrollTo(0,0);
+        }
+
+        // Handbook Language Toggle Logic
+        function toggleHandbookLang(lang) {
+            const btnKn = document.getElementById('toggle-kn');
+            const btnEn = document.getElementById('toggle-en');
+            const knBlocks = document.querySelectorAll('.kn-block');
+            const enBlocks = document.querySelectorAll('.en-block');
+
+            if (lang === 'kn') {
+                btnKn.classList.add('bg-indigo-600', 'text-white');
+                btnKn.classList.remove('text-slate-600');
+                btnEn.classList.remove('bg-indigo-600', 'text-white');
+                btnEn.classList.add('text-slate-600');
+                
+                // Set order: Kn 1, En 2
+                knBlocks.forEach(b => b.style.order = '1');
+                enBlocks.forEach(b => {
+                    b.style.order = '2';
+                    b.classList.remove('border-r', 'pr-8');
+                    b.classList.add('border-l', 'pl-8');
+                });
+            } else {
+                btnEn.classList.add('bg-indigo-600', 'text-white');
+                btnEn.classList.remove('text-slate-600');
+                btnKn.classList.remove('bg-indigo-600', 'text-white');
+                btnKn.classList.add('text-slate-600');
+                
+                // Set order: En 1, Kn 2
+                enBlocks.forEach(b => b.style.order = '1');
+                knBlocks.forEach(b => {
+                    b.style.order = '2';
+                    b.classList.add('border-l', 'pl-8');
+                });
+                // Remove border from En block since it's now first
+                enBlocks.forEach(b => {
+                    b.classList.remove('border-l', 'pl-8');
+                    b.classList.add('border-r', 'pr-8');
+                });
+            }
+        }
+        
+        // Ensure Handbook is the landing page
+        window.onload = () => showPage('handbook');
+
+        function renderStandard(n) { showPage('standard-view'); }
+        function renderKannadaStandard(n) { showPage('standard-view'); }
+        function goBackToStandard() { showPage('standard-view'); }
+    </script>
+</body>
+</html>
